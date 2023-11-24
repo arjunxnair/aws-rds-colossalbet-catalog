@@ -7,46 +7,6 @@ from pyspark.sql import SparkSession
 
 # COMMAND ----------
 
-query = '''
-select 
-uuid,
-recommendation_type,
-account_id,
-pin,
-genweb_event_id,
-rbhq_meeting_venue,
-race_number,
-runner_number,
-runner_name_formatted,
-utc_date,
-utc_time,
-aest_time,
-hour_formatted,
-commentary_home_page,
-commentary_event,
-case 
-when recommendation_type = 'Last Run Winner' then '01' 
-when recommendation_type = 'Missed by a whisker' then '02'
-when recommendation_type = 'On a Hatrick' then '30' 
-when recommendation_type = 'Top Picks' then '31' 
-when recommendation_type = 'Last Winner Track and Distance' then '35' 
-when recommendation_type = 'Track and Distance Top Pick' then '36' 
-end as code_iq,
-DATEDIFF(s, '1970-01-01 00:00:00', utc_time) as epoch_timestamp
-from colossalbet.analytics.customer_recommendations 
-where utc_time >= GETDATE()
-and genweb_event_id > 0 and pin > 0 and runner_number > 0
-and uuid not in 
-(
-select uuid from colossalbet.analytics.customer_recommendations 
-group by uuid
-having count(1)>1
-)
-and recommendation_type in ('Last Run Winner','Missed by a whisker','On a Hatrick','Top Picks','Last Winner Track and Distance' , 'Track and Distance Top Pick')
-'''
-
-# COMMAND ----------
-
 remote_table = spark.read.jdbc(url=colossalbet_con, table="colossalbet.analytics.customer_recommendations")
 
 # COMMAND ----------
