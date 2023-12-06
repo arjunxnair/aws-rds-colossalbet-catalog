@@ -70,7 +70,7 @@ remote_table.write.mode("overwrite").saveAsTable(target_table)
 # COMMAND ----------
 
 # MAGIC %sql 
-# MAGIC select * from aws_rds_colossalbet.analytics.customer_recommendations_api_table where pin = 2239;
+# MAGIC select * from aws_rds_colossalbet.analytics.customer_recommendations_api_table where pin = 2239 order by ttl ;
 
 # COMMAND ----------
 

@@ -9,8 +9,8 @@ colossalbet_con = f"jdbc:sqlserver://colossalbet.calle8u3juvv.ap-southeast-2.rds
 
 # COMMAND ----------
 
-start_date = datetime.strptime('2023-11-23', '%Y-%m-%d')
-end_date = datetime.strptime('2023-11-23', '%Y-%m-%d')
+start_date = datetime.strptime('2021-07-01', '%Y-%m-%d')
+end_date = datetime.strptime('2021-07-01', '%Y-%m-%d')
 loop_date = start_date
 
 # COMMAND ----------
