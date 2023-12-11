@@ -28,6 +28,7 @@ remote_table.write.mode("overwrite").saveAsTable(target_table)
 # MAGIC drop table if exists aws_rds_colossalbet.analytics.customer_recommendations_api_table; 
 # MAGIC create table aws_rds_colossalbet.analytics.customer_recommendations_api_table as  
 # MAGIC select 
+# MAGIC uuid,
 # MAGIC pin,
 # MAGIC genweb_event_id as eventId,
 # MAGIC rbhq_meeting_venue as meeting,
@@ -70,7 +71,12 @@ remote_table.write.mode("overwrite").saveAsTable(target_table)
 # COMMAND ----------
 
 # MAGIC %sql 
-# MAGIC select * from aws_rds_colossalbet.analytics.customer_recommendations_api_table where pin = 2239 order by ttl ;
+# MAGIC select * from aws_rds_colossalbet.analytics.customer_recommendations_api_table where pin = 2258 order by ttl ;
+
+# COMMAND ----------
+
+# MAGIC %sql 
+# MAGIC select * from aws_rds_colossalbet.analytics.customer_recommendations_api_table where pin = 2497 
 
 # COMMAND ----------
 
