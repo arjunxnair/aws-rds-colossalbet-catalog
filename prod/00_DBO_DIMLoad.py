@@ -46,4 +46,12 @@ remote_table.write.mode("overwrite").saveAsTable(target_table)
 
 # COMMAND ----------
 
+remote_table = spark.read.jdbc(url=colossalbet_con, table="colossalbet.analytics.account_client_rating_scd")
+target_table = "aws_rds_colossalbet.analytics.account_client_rating_scd"
+remote_table.write.mode("overwrite").saveAsTable(target_table)
 
+# COMMAND ----------
+
+remote_table = spark.read.jdbc(url=colossalbet_con, table="colossalbet.analytics.account_affiliate_scd_adjusted")
+target_table = "aws_rds_colossalbet.analytics.account_affiliate_scd_adjusted"
+remote_table.write.mode("overwrite").saveAsTable(target_table)
